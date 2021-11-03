@@ -1,0 +1,8 @@
+﻿cl : Command line warning D9035: option 'clr:pure' has been deprecated and will be removed in a future release
+  complier.cpp
+complier.cpp(3): warning C4005: '__CLR_VER': macro redefinition
+  complier.cpp(3): note: command-line arguments:  see previous definition of '__CLR_VER'
+complier.cpp(3): warning C4651: '/D__CLR_VER=40804261' specified for precompiled header but not for current compile
+f:\الكلية\5fghgfg\complier\complier\Header.h(187): warning C4018: '<': signed/unsigned mismatch
+  complier.vcxproj -> F:\الكلية\5fghgfg\complier\Debug\complier.exe
+  complier.vcxproj -> F:\الكلية\5fghgfg\complier\Debug\complier.pdb (Full PDB)

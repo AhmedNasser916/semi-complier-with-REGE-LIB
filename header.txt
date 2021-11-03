@@ -1,0 +1,189 @@
+#pragma once
+#ifndef Header_H
+#define Header_H
+#include<regex>
+#include<string>
+#include<iostream> 
+#include <vector>
+#include<algorithm>
+using namespace std;
+
+string clean(string s)
+{
+	string S="";
+	int i = 0;
+	int strlen = s.length();
+	while (i < strlen)
+	{
+		if (s[i] == '{')
+		{
+
+			while (s[i] != '}')
+			{
+				i++;
+			}
+			
+			i++;
+			
+		}
+		if(s[i]=='\n')
+			S += ' ';
+		else
+			S += s[i];
+		i++;
+
+	}
+	cout << "stroo =" << S << endl;
+	return S;
+
+
+}
+vector<string> split(string s)
+{
+
+	string s1="";
+	vector<string> v;
+	vector<string> v1;
+
+
+	for (int i = 0; i<s.size(); i++)
+	{
+		if (s[i] == ' ' || s[i]=='\n'|| s[i] == '\0')
+		{
+			if (s1 != "" || s1 != "\n" || s1 != "\0")
+			{
+				v.push_back(s1);
+				s1 = "";
+				continue;
+			}
+			i++;
+		}
+
+		s1 += s[i];
+		//cout<<s1<<endl;
+
+	}
+	
+	
+	v.push_back(s1);
+	/*vector<string>::iterator it;
+	it = v.begin();
+	while (it != v.end())
+	{
+
+	if (*it == "read")
+	cout << *it << " -> READ_KW" << endl;
+	else if (*it == "write")
+	cout << *it << " -> WRITE_KW" << endl;
+	else if (it == "" || *it == "/" || *it == "+" || *it == "-")
+	cout << *it << " -> OPERATOR" << endl;
+	else if (*it == "<" || *it == ">" || *it == "=" || *it == "<>")
+	cout << *it << " -> CONDATION" << endl;
+	else if (*it == "if" || *it == "else" || *it == "then" || *it == "end")
+	cout << *it << " -> CONTROL" << endl;
+	else if (*it == "repet" || *it == "until")
+	cout << *it << " -> LOOP" << endl;
+	else if (*it == ";")
+	cout << *it << " -> END LINE" << endl;
+	else if (*it == ":=")
+	cout << *it << " -> ASSINMANT" << endl;
+	else
+	cout << *it << " -> ID" << endl;
+
+
+	it++;
+	}*/
+	return v;
+
+
+
+}
+
+/*
+// regex_match example
+#include <iostream>
+#include <string>
+#include <regex>
+
+
+{
+
+	if (std::regex_match("subject", std::regex("(sub)(.*)")))
+		std::cout << "string literal matched\n";
+
+	const char cstr[] = "subject";
+	std::string s("subject");
+	std::regex e("(sub)(.*)");
+
+	if (std::regex_match(s, e))
+		std::cout << "string object matched\n";
+
+	if (std::regex_match(s.begin(), s.end(), e))
+		std::cout << "range matched\n";
+
+	std::cmatch cm;    // same as std::match_results<const char*> cm;
+	std::regex_match(cstr, cm, e);
+	std::cout << "string literal with " << cm.size() << " matches\n";
+
+	std::smatch sm;    // same as std::match_results<string::const_iterator> sm;
+	std::regex_match(s, sm, e);
+	std::cout << "string object with " << sm.size() << " matches\n";
+
+	std::regex_match(s.cbegin(), s.cend(), sm, e);
+	std::cout << "range with " << sm.size() << " matches\n";
+
+	// using explicit flags:
+	std::regex_match(cstr, cm, e, std::regex_constants::match_default);
+
+	std::cout << "the matches were: ";
+	for (unsigned i = 0; i<cm.size(); ++i) {
+		std::cout << "[" << cm[i] << "] ";
+	}
+
+	std::cout << std::endl;
+
+	return 0;
+}
+
+// regex_search example
+#include <iostream>
+#include <string>
+#include <regex>
+
+int main ()
+{
+std::string s ("this subject has a submarine as a subsequence");
+std::smatch m;
+std::regex e ("\\b(sub)([^ ]*)");   // matches words beginning by "sub"
+
+std::cout << "Target sequence: " << s << std::endl;
+std::cout << "Regular expression: /\\b(sub)([^ ]*)/" << std::endl;
+std::cout << "The following matches and submatches were found:" << std::endl;
+
+while (std::regex_search (s,m,e)) {
+for (auto x:m) std::cout << x << " ";
+std::cout << std::endl;
+s = m.suffix().str();
+}
+
+return 0;
+}
+#include <iostream>
+#include <string>
+#include <regex>
+
+int main ()
+{
+std::string str("1231");
+std::regex r("^(\\d)");
+std::smatch m;
+std::regex_search(str, m, r);
+for(auto v: m) std::cout << v << std::endl;
+
+
+
+*/
+
+
+
+#endif
